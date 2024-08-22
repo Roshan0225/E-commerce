@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Product Listing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Product Listing</h2>
+        <form method="GET">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Seller</th>
+                        <th>Seller Email</th>
+                        <th>Product Name</th>
+                        <th>Product Photo</th>
+                        <th>Specification</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Date Packed</th>
+                        <th>Updated</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in things %}
+                    <tr>
+                        <td>{{ p.No }}</td>
+                        <td>{{ p.Seller }}</td>
+                        <td>{{ p.Seller_email }}</td>
+                        <td>{{ p.Product }}</td>
+                        <td>
+                            <img src="{{ p.product_Photo.url }}" alt="Product Photo" class="img-thumbnail" height="100" width="100">
+                        </td>
+                        <td>{{ p.Specification }}</td>
+                        <td>{{ p.Quantity }}</td>
+                        <td>${{ p.Price }}</td>
+                        <td>{{ p.Date }}</td>
+                        <td>{{ p.updated }}</td>
+                        <td>
+                            <a href="{% url 'purchase' p.No ind.email %}" class="btn btn-primary btn-sm">Buy</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

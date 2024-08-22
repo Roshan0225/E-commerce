@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Seller Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Buttons Section -->
+        <div class="mb-4">
+            <form action="{% url 'myview' owner.Seller_email %}" method="POST" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">View My Products</button>
+            </form>
+            
+            <form action="/pslogout/" method="POST" class="d-inline ml-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+
+            <form action="{% url 'product' owner.Seller_email %}" method="GET" class="d-inline ml-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Sell My Products</button>
+            </form>
+        </div>
+
+        <!-- Seller Details Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Seller Name</th>
+                        <th>Seller Photo</th>
+                        <th>Seller Email</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{owner.Seller_name}}</td>
+                        <td><img src="{{owner.Photo.url}}" class="img-fluid" alt="Seller Image" style="max-height: 120px; width: auto;"></td>
+                        <td>{{owner.Seller_email}}</td>
+                        <td>{{owner.Phone}}</td>
+                        <td>{{owner.Gender}}</td>
+                        <td>{{owner.Address}}</td>
+                        <td>{{owner.Password}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Consumer Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Consumer List</h2>
+        <form action="#">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Consumer Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Password</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in people %}
+                    <tr>
+                        <td>{{ i.S_No }}</td>
+                        <td>{{ i.Name }}</td>
+                        <td>{{ i.email }}</td>
+                        <td>{{ i.Phone }}</td>
+                        <td>{{ i.Gender }}</td>
+                        <td>{{ i.Address }}</td>
+                        <td>{{ i.Password }}</td>
+                        <td>
+                            <a href="{% url 'update' i.S_No %}" class="btn btn-warning btn-sm">Update</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete' i.S_No %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

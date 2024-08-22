@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Product List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4">Product List</h2>
+        <form method="GET">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Seller</th>
+                            <th>Seller Email</th>
+                            <th>Product Name</th>
+                            <th>Product Photo</th>
+                            <th>Specification</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Date Packed</th>
+                            <th>Updated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{prd.No}}</td>
+                            <td>{{prd.Seller}}</td>
+                            <td>{{slr.Seller_email}}</td>
+                            <td>{{prd.Product}}</td>
+                            <td><img src="{{prd.product_Photo.url}}" class="img-fluid" style="max-height: 50px; width: auto;" alt="Product Photo"></td>
+                            <td>{{prd.Specification}}</td>
+                            <td>{{prd.Quantity}}</td>
+                            <td>{{prd.Price}}</td>
+                            <td>{{prd.Date}}</td>
+                            <td>{{prd.updated}}</td>
+                            <td>
+                                <a href="{% url 'purchase' prd.No hum.email %}" class="btn btn-primary btn-sm">BUY</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

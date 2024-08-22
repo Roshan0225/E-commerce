@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Product List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <form action="#">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Seller Name</th>
+                            <th>Email</th>
+                            <th>Product Name</th>
+                            <th>Product Photo</th>
+                            <th>Specifications</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Date Packed</th>
+                            <th>Recently Updated</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in p_val %}
+                            {% load static %}
+                        <tr>
+                            <td>{{ i.No }}</td>
+                            <td>{{ s_sel.Seller_name }}</td>
+                            <td>{{ i.Seller_email }}</td>
+                            <td>{{ i.Product }}</td>
+                            <td><img src="{% static i.product_Photo.url %}" class="img-fluid" style="max-height: 120px; width: auto;" alt="product"></td>
+                            <td>{{ i.Specification }}</td>
+                            <td>{{ i.Quantity }}</td>
+                            <td>{{ i.Price }}</td>
+                            <td>{{ i.Date }}</td>
+                            <td>{{ i.updated }}</td>
+                            <td>
+                                <a href="{% url 'updatepro' i.No %}" class="btn btn-warning btn-sm">Update</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'deletepro' i.No %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

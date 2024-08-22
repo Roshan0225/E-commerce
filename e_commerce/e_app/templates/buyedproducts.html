@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Photo</th>
+                    <th>Seller Name</th>
+                    <th>Seller Email</th>
+                    <th>Seller Address</th>
+                    <th>Buyer Name</th>
+                    <th>Buyer Email</th>
+                    <th>Quantity</th>
+                    <th>Rate</th>
+                    <th>Buyed Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in my %}
+                <tr>
+                    <td>{{ d.product_name }}</td>
+                    <td><img src="{{ d.product_Photo.url }}" alt="Product Photo" class="img-fluid" style="height: 100px; width: 100px;"></td>
+                    <td>{{ d.Seller_name }}</td>
+                    <td>{{ d.seller_email_id }}</td>
+                    <td>{{ d.Seller_address }}</td>
+                    <td>{{ cus.Name }}</td>
+                    <td>{{ cus.email }}</td>
+                    <td>{{ d.quantity }}</td>
+                    <td>{{ d.rate }}</td>
+                    <td>{{ d.buyeddate }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Update Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Update Product</h2>
+        <form action="{% url 'updatepro' pro.No %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter the product name..." value="{{sal.Seller_name}}">
+            </div>
+            <div class="form-group">
+                <label for="product_photo">Product Photo</label>
+                <input type="file" class="form-control-file" id="product_photo" name="product_photo">
+                {% if pro.product_Photo %}
+                    <img src="{{ pro.product_Photo.url }}" alt="Product Photo" class="img-thumbnail mt-2" height="100" width="100">
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="spec">Specifications</label>
+                <textarea class="form-control" id="spec" name="spec" rows="3" placeholder="Enter The Specifications of the product...">{{pro.Specification}}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="qty">Quantity</label>
+                <input type="number" class="form-control" id="qty" name="qty" placeholder="Available counts" value="{{pro.Quantity}}">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" value="{{pro.Price}}">
+                <small class="form-text text-muted">Price for 1 product.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Product Details</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

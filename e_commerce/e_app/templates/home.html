@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Search Form -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <form action="{% url 'search' cus.email %}" method="POST" class="form-inline">
+                    {% csrf_token %}
+                    <input type="text" name="search" class="form-control mr-2" placeholder="Search your product here...">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h3>My Profile</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Name</strong></td>
+                                    <td>{{ cus.Name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email</strong></td>
+                                    <td>{{ cus.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Phone Number</strong></td>
+                                    <td>{{ cus.Phone }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Gender</strong></td>
+                                    <td>{{ cus.Gender }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ cus.Address }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Password</strong></td>
+                                    <td>{{ cus.Password }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'buyedproducts' cus.email %}">My Purchases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="{% url 'cuslogout' cus.email %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Product List -->
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Seller Email</th>
+                                <th>Product Name</th>
+                                <th>Product Photo</th>
+                                <th>Price</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in datas %}
+                            <tr>
+                                <td><a href="{% url 'pview' d.No cus.email %}">{{ d.Seller_email }}</a></td>
+                                <td><a href="{% url 'pview' d.No cus.email %}">{{ d.Product }}</a></td>
+                                <td><a href="{% url 'pview' d.No cus.email %}"><img src="{{ d.product_Photo.url }}" alt="Product Photo" class="img-fluid" style="max-height: 150px; width: auto;"></a></td>
+                                <td><a href="{% url 'pview' d.No cus.email %}">{{ d.Price }}</a></td>
+                                <td><a href="{% url 'pview' d.No cus.email %}">{{ d.Date }}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

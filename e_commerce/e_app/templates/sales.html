@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Submit Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Submit Product Details</h2>
+        <form action="{% url 'product' sel.Seller_email %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" id="product_name" name="product_name" class="form-control" placeholder="Enter the product name.." required>
+            </div>
+            <div class="form-group">
+                <label for="product_photo">Product Photo</label>
+                <input type="file" id="product_photo" name="product_photo" class="form-control-file" required>
+            </div>
+            <div class="form-group">
+                <label for="spec">Specifications</label>
+                <textarea id="spec" name="spec" class="form-control" placeholder="Enter the specifications of the product.." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="qty">Quantity</label>
+                <input type="number" id="qty" name="qty" class="form-control" placeholder="Available counts" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="Price for 1 product" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Product Details</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
